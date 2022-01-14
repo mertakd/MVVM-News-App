@@ -34,10 +34,10 @@ class NewsActivity : AppCompatActivity() {
         //navigation component label dan Toolbar üzerindeki isimleri değiştiremiyoruz bazen, bu kod bloğunu eklememiz lazım.
         navController.addOnDestinationChangedListener{ controller, destination, arguments ->
             title = when (destination.id) {
-                com.androiddevs.mvvmnewsapp.R.id.breakingNewsFragment -> "              Son Dakika Haberleri"
-                com.androiddevs.mvvmnewsapp.R.id.savedNewsFragment -> "              Kaydedilen Haberler"
-                com.androiddevs.mvvmnewsapp.R.id.searchNewsFragment -> "                       Haber Ara"
-                com.androiddevs.mvvmnewsapp.R.id.articleFragment -> "                          HABERLER"
+                com.androiddevs.mvvmnewsapp.R.id.breakingNewsFragment -> "Son Dakika Haberleri"
+                com.androiddevs.mvvmnewsapp.R.id.savedNewsFragment -> "Kaydedilen Haberler"
+                com.androiddevs.mvvmnewsapp.R.id.searchNewsFragment -> "Haber Ara"
+                com.androiddevs.mvvmnewsapp.R.id.articleFragment -> "HABERLER"
                 else -> "NEWS"
             }
 
