@@ -4,9 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 
 import androidx.navigation.ui.setupWithNavController
+import com.androiddevs.mvvmnewsapp.R
 
 import com.androiddevs.mvvmnewsapp.db.ArticleDatabase
 import com.androiddevs.mvvmnewsapp.repository.NewsRepository
@@ -15,6 +21,9 @@ import kotlinx.android.synthetic.main.activity_news.*
 class NewsActivity : AppCompatActivity() {
 
     lateinit var viewModel: NewsViewModel
+
+    lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,5 +53,21 @@ class NewsActivity : AppCompatActivity() {
         }
 
 
+        //appbar üzerindeki geri gelme butonu <--
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(
+            navController = navController,
+            configuration = appBarConfiguration
+        )
+
     }
+
+    //appbar üzerindeki geri gelme butonu <--
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.newsNavHostFragment)
+        return navController.navigateUp(appBarConfiguration)
+                || super.onSupportNavigateUp()
+    }
+
+
 }
